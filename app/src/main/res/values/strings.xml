@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ReCall</string>
+    <string name="registerTextView"><u>가입하기</u></string>
+</resources>
