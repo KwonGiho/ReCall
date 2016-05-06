@@ -1,6 +1,7 @@
 package com.example.kwongyo.recall.core;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.kwongyo.recall.StaticInfomation;
 import com.example.kwongyo.recall.interfaceOfRECALL.LoginInterface;
@@ -20,14 +21,20 @@ public class RegisterController {
     private Retrofit retrofit;
     private boolean isSuccess=false;
     private static RegisterController registerController;
+
+
     static {
         registerController = new RegisterController();
     }
+
+
     public static RegisterController getInstance() {
         if(registerController==null)
             registerController= new RegisterController();
         return registerController;
     }
+
+
     public boolean requestRegister(String email,String name,String password) {
         /*
         원래코드
@@ -57,11 +64,13 @@ public class RegisterController {
 
                 Log.d("회원가입 성공코드 -", response.code() + ""); // 디버깅용
                 isSuccess = true; // 성공했다고 그냥 넣어놓음.
+                Log.d("~~RegisterController","회원가입 성공~~");
             }
 
             @Override
             public void onFailure(Call<UserDTO> call, Throwable t) {
                 isSuccess = false;
+                Log.d("~~RegisterController","회원가입 실패다");
             }
         });
         return isSuccess;

@@ -39,12 +39,19 @@ public class RegisterActivity extends AppCompatActivity {
      */
     @Bind(R.id.inputRegisterPasswordComfirm)
     EditText inputRegisterPasswordComfirm;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_activity);
         ButterKnife.bind(this);
     }
+
+    /**
+     * 사용자가 회원가입 버튼을 클릭했을 때.
+     * @param v
+     */
     @OnClick(R.id.registerCompleteBtn)
     public void registerBtnClick(View v) {
         if( !inputRegisterPassword.getText().toString().equals(inputRegisterPasswordComfirm.getText().toString() ) ) {
