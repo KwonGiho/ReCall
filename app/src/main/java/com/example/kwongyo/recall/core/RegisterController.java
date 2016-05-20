@@ -1,12 +1,10 @@
 package com.example.kwongyo.recall.core;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.kwongyo.recall.StaticInfomation;
-import com.example.kwongyo.recall.interfaceOfRECALL.LoginInterface;
 import com.example.kwongyo.recall.interfaceOfRECALL.RegisterInterface;
-import com.example.kwongyo.recall.model.UserDTO;
+import com.example.kwongyo.recall.model.DTO.UserDTO;
 
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -5,7 +5,7 @@ import android.util.Log;
 
 import com.example.kwongyo.recall.StaticInfomation;
 import com.example.kwongyo.recall.interfaceOfRECALL.LoginInterface;
-import com.example.kwongyo.recall.model.UserDTO;
+import com.example.kwongyo.recall.model.DTO.UserDTO;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -67,6 +67,7 @@ public class LoginController {
                 /* 응답코드가 200번대가 아니라면*/
                 if(!response.isSuccess())
                     return ; // 아무 코드를 실행하지 않고 리턴.
+                UserDTO userDTO = response.body();
 
                 Log.d("로그인_성공코드 -",response.code()+""); // 디버깅용
                 isSuccess = true; // 성공했다고 그냥 넣어놓음.
@@ -75,6 +76,7 @@ public class LoginController {
             @Override
             public void onFailure(Call<UserDTO> call, Throwable t) {
                 isSuccess = false;
+                Log.d("로그인_실패코드-",call.toString()+"__"+t.getMessage());
             }
         });
         return isSuccess;

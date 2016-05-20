@@ -1,4 +1,4 @@
-package com.example.kwongyo.recall.model;
+package com.example.kwongyo.recall.model.DTO;
 
 import java.io.Serializable;
 

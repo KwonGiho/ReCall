@@ -1,6 +1,6 @@
 package com.example.kwongyo.recall.interfaceOfRECALL;
 
-import com.example.kwongyo.recall.model.UserDTO;
+import com.example.kwongyo.recall.model.DTO.UserDTO;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
