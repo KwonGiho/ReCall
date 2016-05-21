@@ -18,6 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.kwongyo.recall.RegisterActivity"/>
+        <activity android:name="com.example.kwongyo.recall.RecallMainActivity"/>
+        <activity android:name="com.example.kwongyo.recall.ProfileActivity"/>
     </application>
 
 </manifest>
