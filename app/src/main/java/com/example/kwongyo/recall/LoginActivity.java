@@ -17,8 +17,15 @@ import butterknife.OnClick;
  * 앱 처음 실행시 실행되는 화면이다. 로그인이 되었는지 체크하고, 이미 로그인 되었다면 메인페이지로 이동시켜준다.
  */
 public class LoginActivity extends AppCompatActivity {
+    /**
+     * 사용자가 이메일을 입력할 EditText 객체입니다.
+     */
     @Bind(R.id.inputId)
     EditText inputId;
+
+    /**
+     * 사용자가 비밀번호를 입력할 EditText 객체입니다.
+     */
     @Bind(R.id.inputPwd)
     EditText inputPwd;
 
@@ -27,14 +34,23 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-
-
-
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        inputId.setText("");
+        inputPwd.setText("");
+    }
+
+    /**
+     * 로그인 버튼이 클릭되었을 떄 발생하는 이벤트 콜백 메소드.
+     * @param view
+     */
     @OnClick(R.id.loginBtn)
     public void loginBtnClick(View view) {
         //로그인 성공시.
-        if(!LoginController.getInstance().requestLogin(inputId.getText().toString(),inputPwd.getText().toString())) {
+        if( LoginController.getInstance().requestLogin(inputId.getText().toString(),inputPwd.getText().toString()) ) {
             Intent intent = new Intent();
             intent.setClass(getApplicationContext(),RecallMainActivity.class);
             startActivity(intent);

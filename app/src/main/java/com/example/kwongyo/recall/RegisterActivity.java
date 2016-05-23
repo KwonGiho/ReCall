@@ -59,7 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
             return ;
         }
         RegisterController.getInstance().requestRegister(inputRegisterEmail.getText().toString(),inputRegisterName.getText().toString(),inputRegisterPassword.getText().toString());
-
+        finish();
 
 
     }

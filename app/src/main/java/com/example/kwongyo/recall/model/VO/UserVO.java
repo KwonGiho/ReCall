@@ -7,7 +7,7 @@ import java.security.Timestamp;
  */
 public class UserVO {
     private String resultCode ;
-    private Timestamp timestamp;
+
     private String uID;
     private String name;
     private String emailId;
@@ -18,14 +18,6 @@ public class UserVO {
 
     public void setResultCode(String resultCode) {
         this.resultCode = resultCode;
-    }
-
-    public Timestamp getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
     }
 
     public String getuID() {
@@ -56,7 +48,6 @@ public class UserVO {
     public String toString() {
         return "UserVO{" +
                 "resultCode='" + resultCode + '\'' +
-                ", timestamp=" + timestamp +
                 ", uID='" + uID + '\'' +
                 ", name='" + name + '\'' +
                 ", emailId='" + emailId + '\'' +
