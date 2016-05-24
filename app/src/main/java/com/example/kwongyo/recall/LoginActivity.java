@@ -1,13 +1,18 @@
 package com.example.kwongyo.recall;
 
 import android.content.Intent;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.kwongyo.recall.core.LoginController;
+import com.example.kwongyo.recall.model.GpsInfo;
+import com.example.kwongyo.recall.model.ServiceR;
+
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -29,11 +34,17 @@ public class LoginActivity extends AppCompatActivity {
     @Bind(R.id.inputPwd)
     EditText inputPwd;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+
+
+        Intent intent = new Intent(this,ServiceR.class);
+        startService(intent);
     }
 
     @Override
@@ -73,6 +84,15 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
         startActivityForResult(intent, StaticInfomation.REGISTER_ACTIVITY);
     }
+
+    @OnClick(R.id.broadcastBtn)
+    public void broadcastBtn(View view) {
+        GpsInfo gpsInfo = new GpsInfo(this);
+        gpsInfo.getLocation();
+
+        Log.e("LoginActivity_lat,lon",gpsInfo.getLatitude()+"_"+gpsInfo.getLongitude());
+    }
+
 
 }
 

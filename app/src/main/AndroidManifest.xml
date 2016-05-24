@@ -3,7 +3,7 @@
     package="com.example.kwongyo.recall" >
 
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permiaaion android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -28,15 +28,20 @@
 
         <receiver android:name=".model.RecallReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.BATTERY_LOW"/>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
                 <action android:name="android.intent.action.CAMERA_BUTTON"/>
-                <action android:name="ANDROID.INTENT.ACTION.MEDIA_BUTTON"/>
-                <action android:name="android.intent.action.TIME_TICK"/>
+                <action android:name="android.intent.action.MEDIA_BUTTON"/>
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL"/>
+                <action android:name="ANDROID.INTENT.ACTION.LOCALE_CHANGED"/>
+                <action android:name="ANDROID.INTENT.ACTION.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.SCREEN_OFF"/>
+                <action android:name="android.intent.action.SCREEN_ON"/>
 
             </intent-filter>
 
         </receiver>
+        <service android:name=".model.ServiceR"/>
     </application>
 
 </manifest>
