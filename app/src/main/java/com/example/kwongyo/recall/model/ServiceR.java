@@ -3,6 +3,7 @@ package com.example.kwongyo.recall.model;
 import android.app.Service;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.FileObserver;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -38,10 +39,15 @@ public class ServiceR extends Service {
         registerReceiver(recallReceiver, new IntentFilter(Intent.ACTION_POWER_CONNECTED)); // 외부 전원을 기기와 연결할 때
         registerReceiver(recallReceiver,new IntentFilter(Intent.ACTION_SCREEN_ON));
         registerReceiver(recallReceiver,new IntentFilter(Intent.ACTION_SCREEN_OFF));
+
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
     }
+
+
+
+
 }
