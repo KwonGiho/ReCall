@@ -38,8 +38,8 @@ public class RecallReceiver  extends BroadcastReceiver {
         // /DCMI/Camera 폴더에 새로운 Medie 파일이 저장되었는지 체크
         startWatching();
 
-        /*
-        여기는 다른 Thread에서 돌려야 할듯....
+
+        //여기는 다른 Thread에서 돌려야 할듯....
 
         if (gpsInfo.isGetLocation()) {
             Log.e("lat_lon",gpsInfo.getLatitude()+"_"+gpsInfo.getLongitude());
@@ -47,7 +47,7 @@ public class RecallReceiver  extends BroadcastReceiver {
         } else {
             //gpsInfo.showSettingsAlert();
         }
-        */
+
 
 
     }
