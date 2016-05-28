@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.location.Location;
+import android.util.Log;
 
 import com.example.kwongyo.recall.core.DataHelperCenter;
 import com.example.kwongyo.recall.model.LocationInfo;
@@ -44,6 +45,7 @@ public class MarkerDAO {
     public boolean insertMarker(String lat,String lon) {
         SQLiteDatabase db = dataHelperCenter.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+        Log.e("insertMarker",lat+"_"+lon);
         contentValues.put(Columns.LAT,lat);
         contentValues.put(Columns.LON,lon);
 
@@ -60,7 +62,7 @@ public class MarkerDAO {
         Cursor cursor = null;
         cursor = db.rawQuery(sql,null);
         while( cursor.moveToNext() ) {
-            arrayList.add(new LocationInfo( cursor.getDouble(0), cursor.getDouble(1) ) );
+            arrayList.add(new LocationInfo( cursor.getDouble(1), cursor.getDouble(2) ) );
         }
         cursor.close();
         return arrayList;
