@@ -61,15 +61,15 @@ public class LoginActivity extends AppCompatActivity {
     @OnClick(R.id.loginBtn)
     public void loginBtnClick(View view) {
         //로그인 성공시.
-        if( LoginController.getInstance().requestLogin(inputId.getText().toString(),inputPwd.getText().toString()) ) {
+      //  if( LoginController.getInstance().requestLogin(inputId.getText().toString(),inputPwd.getText().toString()) ) {
             Intent intent = new Intent();
             intent.setClass(getApplicationContext(),RecallMainActivity.class);
             startActivity(intent);
-        }
+      //  }
         //로그인 실패라면
-        else {
-            Toast.makeText(getApplicationContext(),"로그인실패띵",Toast.LENGTH_SHORT).show();
-        }
+      //  else {
+      //      Toast.makeText(getApplicationContext(),"로그인실패띵",Toast.LENGTH_SHORT).show();
+      //  }
     }
 
     /**
