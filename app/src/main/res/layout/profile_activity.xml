@@ -113,7 +113,7 @@
             android:layout_height="40dp"
             android:padding="10dp"
             android:layout_weight="1"
-            android:src="@drawable/home"
+            android:src="@drawable/grid"
             />
         <ImageView
             android:id="@+id/showAsList"
@@ -148,6 +148,15 @@
         android:layout_marginBottom="50dp"
         >
     </android.support.v7.widget.RecyclerView>
+    <Button
+        android:id="@+id/toServer"
+        android:layout_alignBottom="@id/profile_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="서버로 푸쉬..ㅃ2"
+        android:visibility="gone"
+        android:layout_marginLeft="100dp"
+        />
     <include
         android:id="@+id/profile_activity_bottom"
         android:layout_width="match_parent"

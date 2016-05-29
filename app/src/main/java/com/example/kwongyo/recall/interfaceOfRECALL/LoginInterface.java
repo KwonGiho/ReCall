@@ -2,7 +2,6 @@ package com.example.kwongyo.recall.interfaceOfRECALL;
 
 
 import com.example.kwongyo.recall.model.DTO.UserDTO;
-import com.example.kwongyo.recall.model.VO.UserVO;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -16,7 +15,7 @@ import retrofit2.http.POST;
 public interface LoginInterface {
     @FormUrlEncoded
     @POST("login.do")
-    Call<UserVO> requestLogin(
+    Call<UserDTO> requestLogin(
             @Field("loginId") String loginId,
             @Field("loginPwd") String loginPwd
     );

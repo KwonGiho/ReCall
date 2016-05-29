@@ -37,12 +37,15 @@ public class LocationListAdapter extends CustomAdapter<LocationInfo,LocationList
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         LocationInfo locationInfo = mItems.get(position);
+        holder.mid.setText(Integer.toString(locationInfo.getMid()));
         holder.lat.setText(Double.toString(locationInfo.getLat()));
         holder.lon.setText(Double.toString(locationInfo.getLon()));
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public View mView;
+        @Bind(R.id.m_id)
+        TextView mid;
         @Bind(R.id.lat)
         TextView lat;
         @Bind(R.id.lon)
@@ -50,6 +53,7 @@ public class LocationListAdapter extends CustomAdapter<LocationInfo,LocationList
         public ViewHolder(View v) {
             super(v);
             mView = itemView;
+            mid = (TextView)v.findViewById(R.id.m_id);
             lat = (TextView)v.findViewById(R.id.lat);
             lon = (TextView)v.findViewById(R.id.lon);
         }

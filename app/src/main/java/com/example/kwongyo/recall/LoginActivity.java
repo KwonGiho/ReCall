@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.kwongyo.recall.core.LoginController;
+import com.example.kwongyo.recall.model.CustomPreference;
 import com.example.kwongyo.recall.model.GpsInfo;
 import com.example.kwongyo.recall.model.ServiceR;
 
@@ -45,6 +46,12 @@ public class LoginActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this,ServiceR.class);
         startService(intent);
+
+        /*로그인 체크하는 부분. 로그아웃을 하지 않았다면 자동으로 로그인처리 해준다.*/
+        CustomPreference customPreference = CustomPreference.getInstance(this);
+        if(customPreference.getValue("login",false)) {
+            startActivity(new Intent(getApplicationContext(),RecallMainActivity.class));
+        }
     }
 
     @Override
@@ -52,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onResume();
         inputId.setText("");
         inputPwd.setText("");
+
     }
 
     /**
@@ -61,8 +69,12 @@ public class LoginActivity extends AppCompatActivity {
     @OnClick(R.id.loginBtn)
     public void loginBtnClick(View view) {
         //로그인 성공시.
+
         LoginController loginController = LoginController.getInstance();
         loginController.requestLogin(  this , inputId.getText().toString(),inputPwd.getText().toString() );
+
+
+
 
     }
 

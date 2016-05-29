@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.kwongyo.recall.adapter.ReCallAdapter;
 import com.example.kwongyo.recall.core.RecallMainController;
+import com.example.kwongyo.recall.model.GpsInfo;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -39,7 +40,12 @@ public class RecallMainActivity extends AppCompatActivity{
 
         recyclerView.setAdapter(reCallAdapter);
 
-        RecallMainController.getInstance().setImage(this,reCallAdapter);
+        RecallMainController.getInstance().setImage(this, reCallAdapter);
+
+        GpsInfo gpsInfo = new GpsInfo(this);
+        if(!gpsInfo.isGetLocation()) {
+            gpsInfo.showSettingsAlert();
+        }
     }
 
 

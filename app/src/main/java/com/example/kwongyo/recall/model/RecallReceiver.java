@@ -56,7 +56,7 @@ public class RecallReceiver  extends BroadcastReceiver {
             Log.e("lat_lon",gpsInfo.getLatitude()+"_"+gpsInfo.getLongitude());
             MarkerDAO.getInstance(mContext).insertMarker(Double.toString(gpsInfo.getLatitude()), Double.toString(gpsInfo.getLongitude()));
         } else {
-            gpsInfo.showSettingsAlert();
+            //gpsInfo.showSettingsAlert();
         }
         return true;
     }

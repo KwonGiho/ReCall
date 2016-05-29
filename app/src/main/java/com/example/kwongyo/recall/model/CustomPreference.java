@@ -8,15 +8,21 @@ import android.content.SharedPreferences;
  */
 public class CustomPreference {
 
-    private final String PREF_NAME = "com.altalk.custom.pref";
+    public static CustomPreference getInstance(Context context) {
+        mContext = context;
+        return customPreference;
+    }
+    static {
+        customPreference = new CustomPreference();
+    }
+    private static CustomPreference customPreference;
+    private final String PREF_NAME = "com.example.kwongyo.recall";
     public final static String PREF_INTRO_USER_AGREEMENT = "PREF_USER_AGREEMENT";
     public final static String PREF_MAIN_VALUE = "PREF_MAIN_VALUE";
 
     static Context mContext;
 
-    public CustomPreference(Context context) {
-        mContext = context;
-    }
+    private CustomPreference() {}
 
     public void remove(String key) {
         SharedPreferences pref = mContext.getSharedPreferences(PREF_NAME,

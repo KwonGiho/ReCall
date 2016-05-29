@@ -22,6 +22,7 @@ public class MarkerDAO {
         static final String M_ID="m_id";
         static final String LAT="lat";
         static final String LON="lon";
+        static final String M_TIME="m_time";
     }
     private static MarkerDAO markerDAO;
     private static final String MARKER_TABLE ="marker_table";
@@ -46,8 +47,9 @@ public class MarkerDAO {
         SQLiteDatabase db = dataHelperCenter.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         Log.e("insertMarker",lat+"_"+lon);
-        contentValues.put(Columns.LAT,lat);
+        contentValues.put(Columns.LAT, lat);
         contentValues.put(Columns.LON,lon);
+        contentValues.put(Columns.M_TIME,System.currentTimeMillis());
 
         long result = db.insert(MARKER_TABLE,null,contentValues);
 
@@ -62,7 +64,7 @@ public class MarkerDAO {
         Cursor cursor = null;
         cursor = db.rawQuery(sql,null);
         while( cursor.moveToNext() ) {
-            arrayList.add(new LocationInfo( cursor.getDouble(1), cursor.getDouble(2) ) );
+            arrayList.add(new LocationInfo( cursor.getInt(0), cursor.getDouble(1), cursor.getDouble(2),cursor.getLong(3) ) );
         }
         cursor.close();
         return arrayList;

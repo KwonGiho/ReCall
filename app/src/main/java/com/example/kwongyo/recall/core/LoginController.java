@@ -9,8 +9,9 @@ import android.widget.Toast;
 import com.example.kwongyo.recall.RecallMainActivity;
 import com.example.kwongyo.recall.StaticInfomation;
 import com.example.kwongyo.recall.interfaceOfRECALL.LoginInterface;
+import com.example.kwongyo.recall.model.CustomPreference;
 import com.example.kwongyo.recall.model.DTO.UserDTO;
-import com.example.kwongyo.recall.model.VO.UserVO;
+
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -59,26 +60,32 @@ public class LoginController {
         LoginInterface loginInterface = retrofit.create(LoginInterface.class);
 
         /*서버로 요청을 보낼 객체생성.*/
-        Call<UserVO> call = loginInterface.requestLogin(loginId, loginPwd);
+        Call<UserDTO> call = loginInterface.requestLogin(loginId, loginPwd);
 
         /*Call은 동기화 클래스이다.
         * 한번 요청을 보낸 다음, 재 요청을 보낼 경우 에러가 발생한다.
         * 그렇기 때문에 값싼 clone()메소드를 호출하여 복사하고,
         * 복사한 Call객체로 요청큐에 넣는다. */
-        call.clone().enqueue(new Callback<UserVO>() {
+        call.clone().enqueue(new Callback<UserDTO>() {
             @Override
-            public void onResponse(Call<UserVO> call, Response<UserVO> response) {
+            public void onResponse(Call<UserDTO> call, Response<UserDTO> response) {
                 /* 응답코드가 200번대가 아니라면*/
                 if(!response.isSuccess()) {
                     Log.d("로그인 코드_",response.body().getResultCode()+"");
                     return ; // 아무 코드를 실행하지 않고 리턴.
                 }
-                UserVO userVO = response.body();
-                if(userVO.getResultCode().equals("1")) {
-                    isSuccess = true;
-                } else
-                    isSuccess = false; // 성공했다고 그냥 넣어놓음.
-                Log.d("로그인_성공코드 -",response.code()+""); // 디버깅용
+                Log.d("로그인_성공코드 -", response.code() + ""); // 디버깅용
+
+                UserDTO userDTO = response.body();
+                if(userDTO.getResultCode().equals("0"))
+                    return;
+                CustomPreference customPreference = CustomPreference.getInstance(activity);
+
+                customPreference.put("uId",userDTO.getuId());
+                customPreference.put("name",userDTO.getName());
+                customPreference.put("email",userDTO.getEmailId());
+                customPreference.put("login",true);
+                Log.e("login_login","true");
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -93,7 +100,7 @@ public class LoginController {
             }
 
             @Override
-            public void onFailure(Call<UserVO> call, Throwable t) {
+            public void onFailure(Call<UserDTO> call, Throwable t) {
                 isSuccess = false;
                 Log.d("로그인_실패코드-",call.toString()+"__"+t.getMessage());
                 Log.d("로그인_왜실패?",t.toString());

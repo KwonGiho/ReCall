@@ -20,7 +20,8 @@ public class DataHelperCenter extends SQLiteOpenHelper {
             "CREATE TABLE "+MARKER_TABLE+
                     " (m_id integer primary key AUTOINCREMENT," +
                     "lat TEXT not null," +
-                    "lon TEXT not null)";
+                    "lon TEXT not null," +
+                    "m_time varchar(100) );";
 
     private Context context;
     private DataHelperCenter(Context context){
