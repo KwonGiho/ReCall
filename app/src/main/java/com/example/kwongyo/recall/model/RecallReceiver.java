@@ -21,7 +21,11 @@ public class RecallReceiver  extends BroadcastReceiver {
     // File Observing 클래스
     public static FileObserver observer;
 
-    GpsInfo gpsInfo;
+    public static GpsInfo gpsInfo;
+
+    final static String pathToWatch = android.os.Environment.getExternalStorageDirectory().toString() + "/DCIM/Camera/";
+
+    public static Context mContext;
     public RecallReceiver(GpsInfo gpsInfo) {
         this.gpsInfo=gpsInfo;
     }
@@ -33,30 +37,34 @@ public class RecallReceiver  extends BroadcastReceiver {
 
 
         Log.e("RecallReceiver!방송발생!", intent.getAction());
-        Log.e("location------",intent.getAction());
+        Log.e("location------", intent.getAction());
 
         // /DCMI/Camera 폴더에 새로운 Medie 파일이 저장되었는지 체크
+        mContext = context;
         startWatching();
-
+        isGetLocation();
 
         //여기는 다른 Thread에서 돌려야 할듯....
 
-        if (gpsInfo.isGetLocation()) {
-            Log.e("lat_lon",gpsInfo.getLatitude()+"_"+gpsInfo.getLongitude());
-            MarkerDAO.getInstance(context).insertMarker(Double.toString(gpsInfo.getLatitude()), Double.toString(gpsInfo.getLongitude()));
-        } else {
-            //gpsInfo.showSettingsAlert();
-        }
+
 
 
 
     }
-
+    static boolean isGetLocation(){
+        if (gpsInfo.isGetLocation()) {
+            Log.e("lat_lon",gpsInfo.getLatitude()+"_"+gpsInfo.getLongitude());
+            MarkerDAO.getInstance(mContext).insertMarker(Double.toString(gpsInfo.getLatitude()), Double.toString(gpsInfo.getLongitude()));
+        } else {
+            gpsInfo.showSettingsAlert();
+        }
+        return true;
+    }
     /**
      *  /DCMI/Camera 폴더에 새로운 Medie 파일이 저장되었는지 체크하는 메소드
      */
     private void startWatching() {
-        final String pathToWatch = android.os.Environment.getExternalStorageDirectory().toString() + "/DCIM/Camera/";
+
 
         observer = new FileObserver(pathToWatch, FileObserver.CLOSE_WRITE) { // set up a file observer to watch this directory on sd card
             @Override

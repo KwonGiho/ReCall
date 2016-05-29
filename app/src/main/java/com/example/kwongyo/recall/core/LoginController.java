@@ -1,9 +1,12 @@
 package com.example.kwongyo.recall.core;
 
 
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.kwongyo.recall.RecallMainActivity;
 import com.example.kwongyo.recall.StaticInfomation;
 import com.example.kwongyo.recall.interfaceOfRECALL.LoginInterface;
 import com.example.kwongyo.recall.model.DTO.UserDTO;
@@ -43,7 +46,7 @@ public class LoginController {
     }
 
 
-    public boolean requestLogin(String loginId,String loginPwd) {
+    public boolean requestLogin(final AppCompatActivity activity,String loginId,String loginPwd) {
         /*
         원래코드
 
@@ -71,18 +74,29 @@ public class LoginController {
                     return ; // 아무 코드를 실행하지 않고 리턴.
                 }
                 UserVO userVO = response.body();
-                if(userVO.getResultCode().equals("-1")) {
-                    isSuccess = false;
+                if(userVO.getResultCode().equals("1")) {
+                    isSuccess = true;
                 } else
-                    isSuccess = true; // 성공했다고 그냥 넣어놓음.
+                    isSuccess = false; // 성공했다고 그냥 넣어놓음.
                 Log.d("로그인_성공코드 -",response.code()+""); // 디버깅용
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        activity.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                activity.startActivity(new Intent(activity, RecallMainActivity.class));
+                            }
+                        });
+                    }
+                }).start();
             }
 
             @Override
             public void onFailure(Call<UserVO> call, Throwable t) {
                 isSuccess = false;
                 Log.d("로그인_실패코드-",call.toString()+"__"+t.getMessage());
-                Log.d("로그인_왜실패?",call.clone().toString());
+                Log.d("로그인_왜실패?",t.toString());
             }
         });
         return isSuccess;

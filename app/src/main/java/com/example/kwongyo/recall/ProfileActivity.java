@@ -33,6 +33,9 @@ public class ProfileActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_activity);
         ButterKnife.bind(this);
+        showAsThumnail();
+    }
+    public void showAsThumnail(){
         gridLayoutManager = new GridLayoutManager(this,3);
 
         recyclerView.setLayoutManager(gridLayoutManager);
@@ -41,9 +44,11 @@ public class ProfileActivity extends AppCompatActivity{
 
         recyclerView.setAdapter(reCallAdapter);
 
-        RecallMainController.getInstance().setImage(this,reCallAdapter);
-
-
+        RecallMainController.getInstance().setImage(this, reCallAdapter);
+    }
+    @OnClick(R.id.showAsThumnail)
+    public void showAsThumnailClick(View v) {
+        showAsThumnail();
     }
     LinearLayoutManager linearLayoutManager;
     LocationListAdapter locationListAdapter;

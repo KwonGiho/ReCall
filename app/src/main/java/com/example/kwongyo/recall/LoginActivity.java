@@ -61,15 +61,9 @@ public class LoginActivity extends AppCompatActivity {
     @OnClick(R.id.loginBtn)
     public void loginBtnClick(View view) {
         //로그인 성공시.
-      //  if( LoginController.getInstance().requestLogin(inputId.getText().toString(),inputPwd.getText().toString()) ) {
-            Intent intent = new Intent();
-            intent.setClass(getApplicationContext(),RecallMainActivity.class);
-            startActivity(intent);
-      //  }
-        //로그인 실패라면
-      //  else {
-      //      Toast.makeText(getApplicationContext(),"로그인실패띵",Toast.LENGTH_SHORT).show();
-      //  }
+        LoginController loginController = LoginController.getInstance();
+        loginController.requestLogin(  this , inputId.getText().toString(),inputPwd.getText().toString() );
+
     }
 
     /**
@@ -84,15 +78,19 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
         startActivityForResult(intent, StaticInfomation.REGISTER_ACTIVITY);
     }
-
-    @OnClick(R.id.broadcastBtn)
-    public void broadcastBtn(View view) {
-        GpsInfo gpsInfo = new GpsInfo(this);
-        gpsInfo.getLocation();
-
-        Log.e("LoginActivity_lat,lon",gpsInfo.getLatitude()+"_"+gpsInfo.getLongitude());
-    }
-
-
 }
+
+
+
+
+
+/*if( LoginController.getInstance().requestLogin(inputId.getText().toString(),inputPwd.getText().toString()) ) {
+            Intent intent = new Intent();
+            intent.setClass(getApplicationContext(),RecallMainActivity.class);
+            startActivity(intent);
+        }
+        //로그인 실패라면
+        else {
+            Toast.makeText(getApplicationContext(),"로그인실패띵",Toast.LENGTH_SHORT).show();
+}*/
 

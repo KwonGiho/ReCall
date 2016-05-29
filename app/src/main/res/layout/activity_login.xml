@@ -65,15 +65,6 @@
         android:layout_below="@id/inputPwd"
         android:background="@color/white"
         />
-    <Button
-        android:id="@+id/broadcastBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/loginBtn"
-        android:text="broadcastBtn"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
