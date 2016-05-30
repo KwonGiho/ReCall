@@ -58,5 +58,14 @@ public class RecallMainActivity extends AppCompatActivity{
 
     }
 
+    @OnClick(R.id.searchBtn)
+    public void searchBtnClick(View v) {
+        Toast.makeText(getApplicationContext(),"searchBtn CLick",Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent();
+        intent.setClass(getApplicationContext(), MarkerMapActivity.class);
+        startActivity(intent);
+
+    }
+
 
 }
