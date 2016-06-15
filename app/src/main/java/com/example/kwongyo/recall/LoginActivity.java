@@ -4,14 +4,14 @@ import android.content.Intent;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
+
 
 import com.example.kwongyo.recall.core.LoginController;
 import com.example.kwongyo.recall.model.CustomPreference;
-import com.example.kwongyo.recall.model.GpsInfo;
+
 import com.example.kwongyo.recall.model.ServiceR;
 
 
@@ -43,7 +43,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-
         Intent intent = new Intent(this,ServiceR.class);
         startService(intent);
 
@@ -59,7 +58,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onResume();
         inputId.setText("");
         inputPwd.setText("");
-
     }
 
     /**

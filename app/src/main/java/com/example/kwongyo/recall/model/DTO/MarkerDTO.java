@@ -12,17 +12,18 @@ public class MarkerDTO implements Serializable{
     private String lat;
     private String lng;
     private String m_time;
-
+    private String event;
     public MarkerDTO() {
     }
 
-    public MarkerDTO(String mId, String uId, String address, String lat, String lng, String m_time) {
+    public MarkerDTO(String mId, String uId, String address, String lat, String lng, String m_time, String event) {
         this.mId = mId;
         this.uId = uId;
         this.address = address;
         this.lat = lat;
         this.lng = lng;
         this.m_time = m_time;
+        this.event = event;
     }
 
     public String getmId() {
@@ -73,6 +74,14 @@ public class MarkerDTO implements Serializable{
         this.m_time = m_time;
     }
 
+    public String getEvent() {
+        return event;
+    }
+
+    public void setEvent(String event) {
+        this.event = event;
+    }
+
     @Override
     public String toString() {
         return "MarkerDTO{" +
@@ -82,6 +91,7 @@ public class MarkerDTO implements Serializable{
                 ", lat='" + lat + '\'' +
                 ", lng='" + lng + '\'' +
                 ", m_time='" + m_time + '\'' +
+                ", event='" + event + '\'' +
                 '}';
     }
 }

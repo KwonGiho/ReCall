@@ -30,7 +30,6 @@ public class RecallReceiver  extends BroadcastReceiver {
         this.gpsInfo=gpsInfo;
     }
     public RecallReceiver(){
-
     }
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -42,19 +41,17 @@ public class RecallReceiver  extends BroadcastReceiver {
         // /DCMI/Camera 폴더에 새로운 Medie 파일이 저장되었는지 체크
         mContext = context;
         startWatching();
-        isGetLocation();
-
+        isGetLocation(intent.getAction());
         //여기는 다른 Thread에서 돌려야 할듯....
 
 
 
 
-
     }
-    static boolean isGetLocation(){
+    static boolean isGetLocation(String event){
         if (gpsInfo.isGetLocation()) {
             Log.e("lat_lon",gpsInfo.getLatitude()+"_"+gpsInfo.getLongitude());
-            MarkerDAO.getInstance(mContext).insertMarker(Double.toString(gpsInfo.getLatitude()), Double.toString(gpsInfo.getLongitude()));
+            MarkerDAO.getInstance(mContext).insertMarker(Double.toString(gpsInfo.getLatitude()), Double.toString(gpsInfo.getLongitude()),event);
         } else {
             //gpsInfo.showSettingsAlert();
         }

@@ -107,6 +107,7 @@ public class ProfileActivity extends AppCompatActivity{
             markerDTO.setLat(Double.toString(locationInfo.getLat()));
             markerDTO.setLng(Double.toString(locationInfo.getLon()));
             markerDTO.setM_time(Long.toString(locationInfo.getmTine()));
+            markerDTO.setEvent(locationInfo.getEvent());
             markerDtos.add(markerDTO);
         }
         //JSONArra
@@ -114,6 +115,6 @@ public class ProfileActivity extends AppCompatActivity{
 
         JSONObject jsonObject = MarkerJson.getInstance().createJson(markerDtos);
         String markers = jsonObject.toString();
-        profileController.insertMarker(getApplicationContext(),markers);
+        profileController.sendMarker(getApplicationContext(),markers);
     }
 }

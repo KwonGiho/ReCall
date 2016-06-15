@@ -33,12 +33,12 @@ public class ProfileController {
     }
 
     Retrofit retrofit;
-    public boolean insertMarker(Context context , String markers) {
+    public boolean sendMarker(Context context , String markers) {
         retrofit = new Retrofit.Builder().baseUrl(StaticInfomation.RECALL_BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
         MarkerInterface markerInterface = retrofit.create(MarkerInterface.class);
         CustomPreference customPreference = CustomPreference.getInstance(context);
         Call<MarkerDTO> call = markerInterface.insertMarker("insert",customPreference.getValue("uId",""),markers);
-
+        Log.d("uId----",customPreference.getValue("uId",""));
         call.clone().enqueue(new Callback<MarkerDTO>(){
             @Override
             public void onResponse(Call<MarkerDTO> call, Response<MarkerDTO> response) {
@@ -48,7 +48,6 @@ public class ProfileController {
                 Log.e("marker됬음?", "응됬음");
 
             }
-
             @Override
             public void onFailure(Call<MarkerDTO> call, Throwable t) {
                 Log.e("marker됬음???","안됐음");

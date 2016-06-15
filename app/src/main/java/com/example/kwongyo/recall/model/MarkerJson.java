@@ -26,29 +26,20 @@ public class MarkerJson {
 	}
 	
 	public JSONObject createJson(List<MarkerDTO> markerList) {
-		
 		JSONObject json = new JSONObject();
-		
 		if(markerList != null) {
-			
 			JSONObject markerJson = null;
-
 			JSONArray markerArr = new JSONArray();
-			
 			try {
-
-				
 				for(MarkerDTO marker : markerList) {
-					
 					markerJson = new JSONObject();
-
 					markerJson.put("lat", marker.getLat());
 					markerJson.put("lng", marker.getLng());
 					markerJson.put("m_time", marker.getM_time());
+					markerJson.put("event",marker.getEvent());
 					markerArr.put(markerJson);
 				}
 				json.put("markers", markerArr);
-				
 				return json;
 			}catch (Exception e) {
 				e.printStackTrace();

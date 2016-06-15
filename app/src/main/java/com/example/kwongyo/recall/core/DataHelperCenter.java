@@ -21,7 +21,8 @@ public class DataHelperCenter extends SQLiteOpenHelper {
                     " (m_id integer primary key AUTOINCREMENT," +
                     "lat TEXT not null," +
                     "lon TEXT not null," +
-                    "m_time varchar(100) );";
+                    "m_time varchar(100)," +
+                    "event varchar(200) );";
 
     private Context context;
     private DataHelperCenter(Context context){

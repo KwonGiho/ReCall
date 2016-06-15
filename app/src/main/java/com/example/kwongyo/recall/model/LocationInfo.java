@@ -4,20 +4,19 @@ package com.example.kwongyo.recall.model;
  * Created by kwongyo on 2016-05-24.
  *
  */
+
+/**
+ * 원래는 처음에 쓰려고 만들었지만 MarkerDTO로 대체됨.
+ * 클래스 이름이 회색으로 변하면 삭제해도 될듯?
+ */
 public class LocationInfo {
     private int mid;
     private double lat;
     private double lon;
     private Long mTine;
+    private String event;
 
     public LocationInfo() {
-    }
-
-    public LocationInfo(int mid, double lat, double lon, Long mTine) {
-        this.mid = mid;
-        this.lat = lat;
-        this.lon = lon;
-        this.mTine = mTine;
     }
 
     public int getMid() {
@@ -52,6 +51,23 @@ public class LocationInfo {
         this.mTine = mTine;
     }
 
+    public String getEvent() {
+        return event;
+    }
+
+    public void setEvent(String event) {
+        this.event = event;
+    }
+
+    public LocationInfo(int mid, double lat, double lon, Long mTine, String event) {
+
+        this.mid = mid;
+        this.lat = lat;
+        this.lon = lon;
+        this.mTine = mTine;
+        this.event = event;
+    }
+
     @Override
     public String toString() {
         return "LocationInfo{" +
@@ -59,6 +75,7 @@ public class LocationInfo {
                 ", lat=" + lat +
                 ", lon=" + lon +
                 ", mTine=" + mTine +
+                ", event='" + event + '\'' +
                 '}';
     }
 }
