@@ -41,7 +41,7 @@ public class RecallReceiver  extends BroadcastReceiver {
         // /DCMI/Camera 폴더에 새로운 Medie 파일이 저장되었는지 체크
         mContext = context;
         startWatching();
-        isGetLocation(intent.getAction());
+        //isGetLocation(intent.getAction());//버츄얼 디바이스에서 돌릴땐 이걸 수정해야 함.
         //여기는 다른 Thread에서 돌려야 할듯....
 
 
