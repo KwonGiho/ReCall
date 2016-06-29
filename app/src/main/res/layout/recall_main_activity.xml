@@ -4,19 +4,20 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".recall_main_activity">
+    <include
+
+        android:id="@+id/recall_main_activity_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        layout="@layout/top_menu"
+        />
     <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/recall_main_activity_bottom"
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="50dp"
+
         >
     </android.support.v7.widget.RecyclerView>
-    <include
-        android:layout_below="@id/recyclerView"
-        android:id="@+id/recall_main_activity_bottom"
-        android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="-50dp"
-        layout="@layout/bottom_menu"
-        />
+
 </RelativeLayout>

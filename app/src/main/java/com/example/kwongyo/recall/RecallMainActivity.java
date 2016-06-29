@@ -49,7 +49,7 @@ public class RecallMainActivity extends AppCompatActivity{
     }
 
 
-    @OnClick(R.id.profile)
+    //@OnClick(R.id.profile)
     public void profileBtnClick(View v) {
         Toast.makeText(getApplicationContext(),"profileBtn CLick",Toast.LENGTH_SHORT).show();
         Intent intent = new Intent();
@@ -58,7 +58,7 @@ public class RecallMainActivity extends AppCompatActivity{
 
     }
 
-    @OnClick(R.id.searchBtn)
+   // @OnClick(R.id.searchBtn)
     public void searchBtnClick(View v) {
         Toast.makeText(getApplicationContext(),"searchBtn CLick",Toast.LENGTH_SHORT).show();
         Intent intent = new Intent();
