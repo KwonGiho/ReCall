@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.DrawerLayout
+    android:id="@+id/drawerLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -27,9 +28,11 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/navigation_drawer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="#FFFFFF"
         >
         <ImageView
             android:layout_width="60dp"
@@ -40,9 +43,11 @@
             android:padding="10dp"
             />
         <LinearLayout
+            android:id="@+id/drawerInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:background="#878787"
             >
             <ImageView
                 android:layout_marginTop="70dp"
@@ -64,9 +69,124 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-
+                android:background="@drawable/border_style"
                 />
         </LinearLayout>
+        <View
+            android:id="@+id/midLiner"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#DEDEDE"
+            android:layout_below="@id/drawerInfo"
+            />
+        <TextView
+            android:id="@+id/albumTv"
+            android:layout_below="@id/midLiner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="앨범"
+            android:layout_margin="10dp"
+            />
+        <ImageView
+            android:id="@+id/album_detailbtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/detail"
+            android:layout_below="@id/midLiner"
+            android:layout_alignParentRight="true"
+            android:paddingTop="10dp"
+
+
+            />
+        <HorizontalScrollView
+            android:id="@+id/album_componemt"
+            android:layout_below="@id/albumTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="-10dp"
+            android:paddingLeft="10dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+                <ImageView
+                    android:src="@drawable/test"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="5dp"/>
+                <ImageView
+                    android:src="@drawable/test"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="5dp"/>
+                <ImageView
+                    android:src="@drawable/test"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="5dp"/>
+                <ImageView
+                    android:src="@drawable/test"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="5dp"/>
+                <ImageView
+                    android:src="@drawable/test"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="5dp"/>
+                <ImageView
+                    android:src="@drawable/test"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="5dp"/>
+                <ImageView
+                    android:src="@drawable/test"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="5dp"/>
+                <ImageView
+                    android:src="@drawable/test"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="5dp"/>
+                <ImageView
+                    android:src="@drawable/test"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="5dp"/>
+            </LinearLayout>
+        </HorizontalScrollView>
+        <View
+            android:id="@+id/album_underline"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#44000000"
+            android:layout_below="@id/album_componemt"
+            />
+        <TextView
+            android:id="@+id/marker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="좌표"
+            android:layout_below="@id/album_underline"
+            android:layout_margin="10dp"
+            />
+        <ImageView
+            android:id="@+id/marker_detail"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/detail"
+            android:layout_alignBottom="@id/marker"
+            android:layout_alignParentRight="true"
+            android:paddingTop="10dp"
+            />
+        <View
+            android:layout_marginTop="9dp"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#DEDEDE"
+            android:layout_below="@id/marker_detail"
+            />
 
 
     </RelativeLayout>
