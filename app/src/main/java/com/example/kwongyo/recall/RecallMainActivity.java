@@ -42,10 +42,10 @@ public class RecallMainActivity extends AppCompatActivity{
 
         RecallMainController.getInstance().setImage(this, reCallAdapter);
 
-        GpsInfo gpsInfo = new GpsInfo(this);
+        /*GpsInfo gpsInfo = new GpsInfo(this);
         if(!gpsInfo.isGetLocation()) {
             gpsInfo.showSettingsAlert();
-        }
+        }*/
     }
 
 

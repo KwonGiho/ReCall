@@ -35,18 +35,13 @@ public class LoginActivity extends AppCompatActivity {
     @Bind(R.id.inputPwd)
     EditText inputPwd;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-
         Intent intent = new Intent(this,ServiceR.class);
-        startService(intent);
-
-
+        //startService(intent);
     }
 
     @Override
@@ -54,9 +49,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onResume();
         /*로그인 체크하는 부분. 로그아웃을 하지 않았다면 자동으로 로그인처리 해준다.*/
         CustomPreference customPreference = CustomPreference.getInstance(this);
-        if(customPreference.getValue("login",false)) {
+        //if(customPreference.getValue("login",false)) {
             startActivity(new Intent(getApplicationContext(),RecallMainActivity.class));
-        }
+        //}
         inputId.setText("");
         inputPwd.setText("");
     }
@@ -68,13 +63,8 @@ public class LoginActivity extends AppCompatActivity {
     @OnClick(R.id.loginBtn)
     public void loginBtnClick(View view) {
         //로그인 성공시.
-
         LoginController loginController = LoginController.getInstance();
         loginController.requestLogin(this, inputId.getText().toString(), inputPwd.getText().toString());
-
-
-
-
     }
 
     /**
@@ -89,21 +79,4 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
         startActivityForResult(intent, StaticInfomation.REGISTER_ACTIVITY);
     }
-
-
 }
-
-
-
-
-
-/*if( LoginController.getInstance().requestLogin(inputId.getText().toString(),inputPwd.getText().toString()) ) {
-            Intent intent = new Intent();
-            intent.setClass(getApplicationContext(),RecallMainActivity.class);
-            startActivity(intent);
-        }
-        //로그인 실패라면
-        else {
-            Toast.makeText(getApplicationContext(),"로그인실패띵",Toast.LENGTH_SHORT).show();
-}*/
-
