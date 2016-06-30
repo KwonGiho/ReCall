@@ -52,7 +52,7 @@
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:background="@drawable/searchbtn"
+            android:background="@drawable/search_btn"
             android:layout_alignBaseline="@id/baseArea"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="20dp"

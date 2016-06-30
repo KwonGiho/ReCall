@@ -69,4 +69,12 @@ public class RecallMainActivity extends AppCompatActivity{
     }
 
 
+    @OnClick(R.id.alarmStatus)
+    public void alarmStatusBtnClick(View v) {
+        Toast.makeText(getApplicationContext(), "alarmStatusBtn CLick", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent();
+        intent.setClass(getApplicationContext(), MarkerListActivity.class);
+        startActivity(intent);
+
+    }
 }

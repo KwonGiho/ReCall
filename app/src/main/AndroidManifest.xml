@@ -42,6 +42,7 @@
         <activity android:name="com.example.kwongyo.recall.RecallMainActivity"/>
         <activity android:name="com.example.kwongyo.recall.ProfileActivity"/>
         <activity android:name="com.example.kwongyo.recall.MarkerMapActivity"/>
+        <activity android:name="com.example.kwongyo.recall.MarkerListActivity"/>
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"

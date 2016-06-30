@@ -11,7 +11,7 @@ public class StaticInfomation {
     public final static int REGISTER_ACTIVITY = 1;
 
     /*public static final String RECALL_BASE_URL = "http://172.31.141.123:8089/graduationRepo/";*/
-    /* */
+
     public static final String RECALL_BASE_URL = "http://52.79.152.130/graduationRepo/";
 
     public static final String TEST_REQUEST_URL = "http://thecatapi.com/api/Images/get?format=xml&results_per_page=20";
