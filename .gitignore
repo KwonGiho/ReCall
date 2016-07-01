@@ -5,3 +5,5 @@
 .DS_Store
 /build
 /captures
+ReCall.iml
+.idea/misc.xml
